@@ -1,12 +1,12 @@
 /* =========================================================
-   ¿Quieres ser mi Madrina de Honor? — lógica
+   ¿Quieres ser mi Dama de Honor? — lógica
    ========================================================= */
 
 // ---------- CONFIGURACIÓN (EDITAR para cada clienta) ----------
 const CONFIG = {
     firma: 'Catherine',            // nombre de quien invita (la novia)
-    rol: 'Madrina de Honor',       // título de la pregunta. Ej: 'Madrina', 'Dama de Honor'
-    fecha: '04 de junio 2027',     // se muestra al aceptar. Vacío = 'Confidencial'
+    rol: 'Dama de Honor',          // título de la pregunta. Ej: 'Dama de Honor', 'Madrina'
+    fecha: '04 de junio 2027',     // se muestra al aceptar, con el sello de CONFIDENCIAL
     whatsapp: '',                  // EDITAR: número que recibe la respuesta, solo dígitos. Ej: '18095551234'. Vacío = sin botón
     musica: '',                    // EDITAR: ruta de un mp3 (ej. 'musica.mp3'). Vacío = sin música
     velocidad: 42                  // ms entre letra y letra al escribir
@@ -35,11 +35,7 @@ function personalizar() {
         t.appendChild(l2);
     }
     $('firma').textContent = CONFIG.firma;
-    if (CONFIG.fecha) {
-        $('fechaTexto').textContent = CONFIG.fecha;
-        const nota = document.querySelector('.fecha + .texto.chico');
-        if (nota) nota.textContent = 'Guarda la fecha, muy pronto te daré todos los detalles.';
-    }
+    if (CONFIG.fecha) $('fechaTexto').textContent = CONFIG.fecha;
     if (NOMBRE) {
         $('sobreNombre').textContent = NOMBRE;
         $('saludo').textContent = 'Querida ' + NOMBRE + ',';
@@ -180,10 +176,11 @@ function prepararSi() {
         await new Promise((r) => setTimeout(r, 600));
         pregunta.hidden = true;
         $('respuesta').hidden = false;
+        setTimeout(() => document.querySelector('.fecha-sello').classList.add('estampar'), 1100);
         $('tarjeta').scrollIntoView({ behavior: reducido ? 'auto' : 'smooth', block: 'start' });
 
         if (CONFIG.whatsapp) {
-            const quien = NOMBRE ? NOMBRE : 'Tu madrina';
+            const quien = NOMBRE ? NOMBRE : 'tu dama';
             const msg = '¡' + CONFIG.firma + '! Soy ' + quien + ' y acepto con todo mi corazón ser tu ' + CONFIG.rol + ' 💕';
             const a = $('btnWhats');
             a.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg);
