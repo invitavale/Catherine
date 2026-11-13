@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>¿Quieres ser mi Madrina de Honor?</title>
+    <meta name="description" content="Tengo una pregunta muy especial para ti 💌">
+    <meta name="theme-color" content="#5E1426">
+
+    <!-- Vista previa al compartir (EDITAR la URL y la imagen al publicar) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tengo una pregunta muy especial para ti 💌">
+    <meta property="og:description" content="Abre el sobre…">
+    <meta property="og:locale" content="es_DO">
+
+    <link rel="preload" as="font" type="font/woff2" href="fonts/great-vibes-latin-400-normal.woff2" crossorigin>
+    <link rel="stylesheet" href="estilo.css?v=9">
+</head>
+<body>
+    <!-- Gráficos en código: degradados reutilizables -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="gOro" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#E9CC8E"/><stop offset=".45" stop-color="#B98A45"/><stop offset=".7" stop-color="#DDBA78"/><stop offset="1" stop-color="#9C7232"/>
+            </linearGradient>
+
+        </defs>
+    </svg>
+
+    <!-- 1. SOBRE (toca el sello para abrir) -->
+    <div id="sobre" class="sobre" role="button" tabindex="0" aria-label="Toca el sello para abrir la invitación">
+        <div class="sobre-cuerpo"></div>
+        <div class="sobre-solapa-wrap"><div class="sobre-solapa"></div></div>
+        <div class="sobre-sello" aria-hidden="true"><img src="img/sello.webp" alt="" width="400" height="400"></div>
+        <p class="sobre-para" aria-hidden="true">Para <span id="sobreNombre">ti</span></p>
+        <p class="sobre-hint">Toca el sello para abrir</p>
+    </div>
+
+    <!-- Música (opcional: se muestra solo si hay archivo configurado en app.js) -->
+    <button id="btnMusica" class="btn-musica" aria-label="Pausar o reanudar música" hidden>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+    </button>
+    <audio id="musica" preload="auto" loop playsinline></audio>
+
+    <main class="escena">
+        <article id="tarjeta" class="tarjeta" aria-live="polite">
+            <!-- decoración: hojas, marco dorado, listones -->
+            <img class="deco hojas hojas-a" src="img/hojas.webp" alt="">
+            <img class="deco hojas hojas-b" src="img/hojas.webp" alt="">
+            <svg id="marco" class="deco marco" aria-hidden="true"><path/></svg>
+            <img class="deco liston liston-a" src="img/liston-a.webp" alt="" width="691" height="470">
+            <img class="deco liston liston-b" src="img/liston-b.webp" alt="" width="584" height="595">
+
+            <div class="t-cuerpo">
+                <img class="adorno" src="img/adorno-top.webp" alt="" width="585" height="176">
+                <!-- 2. PREGUNTA (se escribe sola) -->
+                <section id="pregunta" class="paso paso-pregunta">
+                    <p id="saludo" class="saludo"></p>
+                    <p id="intro" class="intro" data-texto="Estoy a punto de convertir mi sueño en realidad y me gustaría que una persona tan importante como tú sea parte de esto:"></p>
+
+                    <div id="divCorazon" class="div-corazon oculto" aria-hidden="true"><img src="img/divisor.webp" alt="" width="600" height="69"></div>
+
+                    <h1 class="titulo">
+                        <span id="tituloSerif" class="titulo-serif" data-texto="¿Deseas ser mi"></span>
+                        <span id="tituloScript" class="titulo-script">Madrina de Honor?</span>
+                        <svg id="trazo" class="trazo" viewBox="0 0 300 40" aria-hidden="true">
+                            <path d="M141 24 C 110 30, 70 12, 30 18 C 18 20, 12 26, 18 28"/>
+                            <path d="M159 24 C 190 30, 230 12, 270 18 C 282 20, 288 26, 282 28"/>
+                            <path class="trazo-estrella" d="M150 14 L152.4 21.6 L160 24 L152.4 26.4 L150 34 L147.6 26.4 L140 24 L147.6 21.6Z"/>
+                        </svg>
+                    </h1>
+
+                    <div id="botones" class="botones oculto">
+                        <button id="btnSi" class="btn btn-si"><span>Sí, acepto</span></button>
+                        <button id="btnNo" class="btn btn-no">No, gracias</button>
+                    </div>
+                    <p class="saltar" id="saltar">Toca para continuar…</p>
+                </section>
+
+                <!-- 3. RESPUESTA: SÍ -->
+                <section id="respuesta" class="paso paso-respuesta" hidden>
+                    <p class="kicker">¡Sabía que dirías que sí!</p>
+                    <h2 class="gracias">Gracias, <span id="graciasNombre">madrina</span></h2>
+                    <p class="texto">Contigo a mi lado, este día será aún más especial. Prepárate, porque vamos a vivirlo juntas.</p>
+
+                    <!-- Fecha confidencial -->
+                    <div class="bloque">
+                        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><circle cx="8.5" cy="14.5" r=".9"/><circle cx="12" cy="14.5" r=".9"/><circle cx="15.5" cy="14.5" r=".9"/></svg>
+                        <div class="fecha">
+                            <span class="fecha-label">Fecha:</span>
+                            <div class="fecha-caja">
+                                <span id="fechaTexto" class="fecha-texto">Confidencial</span>
+                            </div>
+                        </div>
+                        <p class="texto chico">🤫 Por ahora es un secreto entre nosotras. Muy pronto te revelaré la fecha y todos los detalles.</p>
+                    </div>
+
+                    <div class="div-corazon" aria-hidden="true"><img src="img/divisor.webp" alt="" width="600" height="69"></div>
+
+                    <!-- Imagen de inspiración (EDITAR o quitar) -->
+                    <div class="bloque">
+                        <p class="sc-titulo">Inspiración</p>
+                        <p class="dress-script">En tonos vino</p>
+                        <figure class="vestidos">
+                            <img src="img/vestidos.webp" alt="Vestidos largos de satín en color vino" width="1000" height="1092" loading="lazy">
+                        </figure>
+                        <div class="paleta" aria-hidden="true">
+                            <span style="--c:#4A0F1E"></span><span style="--c:#6B1730"></span><span style="--c:#8A2342"></span>
+                        </div>
+                    </div>
+
+                    <a id="btnWhats" class="btn btn-si btn-whats" href="#" target="_blank" rel="noopener" hidden><span>Avisarle por WhatsApp</span></a>
+
+                    <p class="firma-pre">Con todo mi cariño,</p>
+                    <p id="firma" class="firma"></p>
+                </section>
+                <img class="adorno adorno-pie" src="img/adorno-pie.webp" alt="" width="419" height="119">
+            </div>
+        </article>
+    </main>
+
+    <canvas id="confeti" class="confeti" aria-hidden="true"></canvas>
+    <script src="app.js?v=8"></script>
+</body>
+</html>
